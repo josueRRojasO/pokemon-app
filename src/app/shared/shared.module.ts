@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardComponent } from './card/card.component';
 import { ModalCardComponent } from './modal/modal-card.component';
-
+import { TypeColorService } from '../services/type-color.service'
 
 
 @NgModule({
@@ -16,6 +16,13 @@ import { ModalCardComponent } from './modal/modal-card.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    CardComponent,
+    ModalCardComponent
+  ],
+  providers: [TypeColorService]
 })
 export class SharedModule { }

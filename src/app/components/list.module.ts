@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -9,7 +10,8 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
     PokemonListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [PokemonListComponent]
 })

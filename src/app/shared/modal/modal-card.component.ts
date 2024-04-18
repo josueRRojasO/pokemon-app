@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TypeColorService } from 'src/app/services/type-color.service';
 
 @Component({
   selector: 'app-modal-card',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private typeColorService: TypeColorService) { }
 
   ngOnInit(): void {
+    this.typeColorService.typeColors['bug']
   }
 
 }
