@@ -19,7 +19,6 @@ export class CardComponent {
   @Input()
   public set pokemon(value: BasicPokemonCard) {
     this._pokemon = value;
-    console.log(value);
   }
 
   cardColor: string = ''

@@ -2,12 +2,15 @@
 
 <div *ngIf="pokemonList" class="flex-container">
   <div *ngFor="let pokemon of pokemonList.results; trackBy:trackByItems" class="card">
-    <app-card [pokemon]="pokemon"></app-card>
+    <app-card [pokemon]="pokemon" (click)="openModal(pokemon)"></app-card>
   </div>
 </div>
 
+<div *ngIf="modalSwitch">
+  <app-modal-card [pokemon]="pokemonCardInfo" (closeEmmit)="closeModal($event)"></app-modal-card>
+</div>
 
-<!-- <app-modal-card [pokemon]="pokemonCardInfo"></app-modal-card>
- -->
+
+
 
 <app-footer class="container"></app-footer>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PokemonCard } from 'src/app/models/pokemon-card';
 import { TypeColorService } from 'src/app/services/type-color.service';
 
@@ -19,6 +19,8 @@ export class ModalCardComponent {
     this.initializeParams()
   }
 
+  @Output() closeEmmit: EventEmitter<boolean> = new EventEmitter<boolean>()
+
   cardColor: string = ''
   pokemonURL: string = ''
 
@@ -36,7 +38,12 @@ export class ModalCardComponent {
   }
 
   filterType(type: string){
+    if (!type.includes("/")) return type;
     return type.slice(0, type.lastIndexOf(" /"));
+  }
+
+  emitClose() {
+    this.closeEmmit.emit(true)
   }
 
   initializeURL(url: string) {

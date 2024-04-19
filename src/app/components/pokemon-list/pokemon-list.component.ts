@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon';
 import { PokemonCard } from 'src/app/models/pokemon-card';
-import { PokemonList } from 'src/app/models/pokemon-list';
+import { PokemonList, Result } from 'src/app/models/pokemon-list';
 import { PokemonInfoService } from 'src/app/services/pokemon-info.service';
 
 @Component({
@@ -15,14 +15,13 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   pokemon!: Pokemon
   pokemonList!: PokemonList
   pokemonCardInfo!: PokemonCard
-
+  modalSwitch: boolean = false
   unsubscribeSignal: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(private pokemonInfoService: PokemonInfoService) { }
 
   ngOnInit(): void {
     this.getAllPokemon()
-    this.initializePokemonValue(1)
   }
 
   ngOnDestroy(): void {
@@ -39,14 +38,18 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     })
   }
 
-  initializePokemonValue(id: number) {
+  initializePokemonValue(name: string) {
     this.pokemonInfoService
-    .getPokemonById(id)
+    .getPokemonByName(name)
     .pipe(takeUntil(this.unsubscribeSignal))
-    .subscribe(pokemon => {
-      this.pokemon = pokemon
-      this.createPokemonModalCardInfo()
-    })
+    .subscribe(
+      (pokemon) => {
+        this.pokemon = pokemon
+        this.createPokemonModalCardInfo()
+        this.modalSwitch = true
+      },
+      (err) => { console.log(err) },
+    )
   }
 
   cratePokemonCardInfo(){
@@ -79,6 +82,13 @@ export class PokemonListComponent implements OnInit, OnDestroy {
       speed,
       url
     };
+  }
+
+  openModal(pokemon: Result){
+    this.initializePokemonValue(pokemon.name)
+  }
+  closeModal($event: boolean){
+    this.modalSwitch = false
   }
 
   trackByItems(index: number, name: any): number {

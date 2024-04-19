@@ -12,8 +12,8 @@ export class PokemonInfoService {
     return this.httpClient.get<PokemonList>(`${this.url}pokemon/`)
   }
 
-  getPokemonById(id: number): Observable<Pokemon> {
-    return this.httpClient.get<Pokemon>(`${this.url}pokemon/${id}`)
+  getPokemonByName(name: string): Observable<Pokemon> {
+    return this.httpClient.get<Pokemon>(`${this.url}pokemon/${name}`)
   }
 
 }
