@@ -17,7 +17,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   pokemonCardInfo!: PokemonCard
   modalSwitch: boolean = false
   unsubscribeSignal: EventEmitter<any> = new EventEmitter<any>()
-
+  p: number = 1;
   constructor(private pokemonInfoService: PokemonInfoService) { }
 
   ngOnInit(): void {
@@ -35,6 +35,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
     .pipe(takeUntil(this.unsubscribeSignal))
     .subscribe(pokemonList => {
       this.pokemonList = pokemonList
+      console.log(this.pokemonList);
     })
   }
 

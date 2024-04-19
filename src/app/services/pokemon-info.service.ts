@@ -7,9 +7,8 @@ import { Pokemon } from '../models/pokemon';
 export class PokemonInfoService {
   constructor(private httpClient: HttpClient) { }
   url: string = 'https://pokeapi.co/api/v2/'
-
   getPokemonList(): Observable<PokemonList>{
-    return this.httpClient.get<PokemonList>(`${this.url}pokemon/`)
+    return this.httpClient.get<PokemonList>(`${this.url}pokemon?limit=1302`)
   }
 
   getPokemonByName(name: string): Observable<Pokemon> {

@@ -1,9 +1,11 @@
 <app-header class="container sticky"></app-header>
 
 <div *ngIf="pokemonList" class="flex-container">
-  <div *ngFor="let pokemon of pokemonList.results; trackBy:trackByItems" class="card">
+  <div *ngFor="let pokemon of pokemonList.results | paginate: { itemsPerPage: 20, currentPage: p, totalItems: 1302 }; trackBy:trackByItems" class="card">
     <app-card [pokemon]="pokemon" (click)="openModal(pokemon)"></app-card>
   </div>
+  <pagination-controls
+  (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <div *ngIf="modalSwitch">
