@@ -5,6 +5,7 @@ export interface PokemonCard {
   attack: number;
   defense: number;
   special_attack: number;
-  special_deffense: number;
+  special_defense: number;
   speed: number;
+  url: string;
 }

@@ -1,1 +1,7 @@
-<p>card works!</p>
+<div class="modal-container card" *ngIf="pokemon">
+  <div class="card-container" [ngStyle]="{'background-color': cardColor}">
+    <div class="name-container">
+      <p>{{ pokemon.name | titlecase }}</p>
+    </div>
+  </div>
+</div>

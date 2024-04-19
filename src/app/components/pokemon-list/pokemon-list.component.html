@@ -1,1 +1,13 @@
 <app-header class="container sticky"></app-header>
+
+<div *ngIf="pokemonList" class="flex-container">
+  <div *ngFor="let pokemon of pokemonList.results; trackBy:trackByItems" class="card">
+    <app-card [pokemon]="pokemon"></app-card>
+  </div>
+</div>
+
+
+<!-- <app-modal-card [pokemon]="pokemonCardInfo"></app-modal-card>
+ -->
+
+<app-footer class="container"></app-footer>

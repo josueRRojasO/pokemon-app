@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TypeColor } from '../models/pokemon-types-colors';
+import { TypeColor } from '../models/pokemon-types';
 
 @Injectable({
   providedIn: 'root'
